@@ -1,10 +1,14 @@
+import fs from 'fs/promises';
+import path from 'path';
 import db from "../config/connection.js";
 import Question from "../models/Question.js";
 import cleanDB from "./cleanDb.js";
 
 (async () => {
-  // Dynamically import the JSON data
-  const { default: pythonQuestions } = await import('./pythonQuestions.json');
+  // Read and parse JSON data
+  const jsonFilePath = path.resolve('server', 'seeds', 'pythonQuestions.json');
+  const data = await fs.readFile(jsonFilePath, 'utf-8');
+  const pythonQuestions = JSON.parse(data);
 
   db.once('open', async () => {
     await cleanDB('Question', 'questions');
