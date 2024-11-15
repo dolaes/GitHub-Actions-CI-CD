@@ -5,7 +5,7 @@ import fs from 'fs';
 import path from 'path';
 
 // Read the JSON file
-const pythonQuestions = JSON.parse(fs.readFileSync(path.resolve('path/to/pythonQuestions.json'), 'utf-8'));
+const pythonQuestions = JSON.parse(fs.readFileSync(path.resolve('/pythonQuestions.json'), 'utf-8'));
 
 db.once('open', async () => {
   await cleanDB('Question', 'questions');
