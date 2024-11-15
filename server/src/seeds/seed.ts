@@ -6,7 +6,7 @@ import cleanDB from "./cleanDb.js";
 
 (async () => {
   // Read and parse JSON data
-  const jsonFilePath = path.resolve('server', 'seeds', 'pythonQuestions.json');
+  const jsonFilePath = path.resolve('seeds', 'pythonQuestions.json');
   const data = await fs.readFile(jsonFilePath, 'utf-8');
   const pythonQuestions = JSON.parse(data);
 
