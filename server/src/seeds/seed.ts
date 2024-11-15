@@ -4,9 +4,10 @@ import db from "../config/connection.js";
 import Question from "../models/Question.js";
 import cleanDB from "./cleanDb.js";
 
+// Calculate the absolute path relative to this script's directory
+const jsonFilePath = path.join(path.dirname(new URL(import.meta.url).pathname), 'pythonQuestions.json');
+
 (async () => {
-  // Read and parse JSON data
-  const jsonFilePath = path.resolve('seeds', 'pythonQuestions.json');
   const data = await fs.readFile(jsonFilePath, 'utf-8');
   const pythonQuestions = JSON.parse(data);
 
