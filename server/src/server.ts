@@ -2,7 +2,7 @@ import express from 'express';
 // import path from 'node:path';
 import db from './config/connection.js';
 import routes from './routes/index.js';
-import { seedAll } from './seeds/seed.js';
+//import { seedAll } from './seeds/seed.js';
 
 const app = express();
 const PORT = process.env.PORT || 3001;
@@ -15,7 +15,7 @@ app.use(express.static('../client/dist'));
 
 app.use(routes);
 
-await seedAll();
+//await seedAll();
 
 db.once('open', () => {
   app.listen(PORT, () => console.log(`🌍 Now listening on localhost:${PORT}`));
