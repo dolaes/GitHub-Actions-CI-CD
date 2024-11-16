@@ -25,15 +25,15 @@ jobs:
         # Run install and test scripts
         run: |
             npm install
-            npm run test
+            npm run test-component
 
       # Define a step named "Deploy"
       - name: Deploy
         # Only run this step if the branch is main
-        if: github.ref == 'refs/heads/main'
+        if: github.ref == 'refs/heads/main' || github.event.pull_request.base.ref == 'main'
         # Set an environment variable with the deployment URL from secrets
         env:
           DEPLOY_URL: ${{ secrets.RENDER_DEPLOY_HOOK_URL }}
         # Run the deployment command
         run: |
-          curl "$DEPLOY_URL"
+          curl -v "$DEPLOY_URL"

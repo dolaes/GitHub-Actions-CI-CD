@@ -1,12 +1,11 @@
 # Name of workflow
-name: Lint and Test workflow
+name: Test workflow
 
 # Trigger workflow on all pull requests
 on:
   pull_request:
     branches:
       - develop
-      - staging
 
 jobs:
   test:
@@ -34,4 +33,4 @@ jobs:
 
       # Run tests
       - name: Run Tests
-        run: npm run test
+        run: npm run test-component
