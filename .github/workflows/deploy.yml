@@ -30,7 +30,7 @@ jobs:
       # Define a step named "Deploy"
       - name: Deploy
         # Only run this step if the branch is main
-        if: github.ref == 'refs/heads/main'
+        if: github.ref == 'refs/heads/main' || github.event.pull_request.base.ref == 'main'
         # Set an environment variable with the deployment URL from secrets
         env:
           DEPLOY_URL: ${{ secrets.RENDER_DEPLOY_HOOK_URL }}
