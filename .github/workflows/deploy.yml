@@ -32,9 +32,8 @@ jobs:
         # Only run this step if the branch is main
         if: github.ref == 'refs/heads/main'
         # Set an environment variable with the deployment URL from secrets
-        # test 1
         env:
           DEPLOY_URL: ${{ secrets.RENDER_DEPLOY_HOOK_URL }}
         # Run the deployment command
         run: |
-          curl "$DEPLOY_URL"
+          curl -v "$DEPLOY_URL"
